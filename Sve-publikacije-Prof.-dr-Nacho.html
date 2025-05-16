@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publikacije - Prof. dr sci. med. Bobi Nacho | Klinički centar Elysium</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#1e5b9b',secondary:'#d4af37'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+.nav-link {
+    position: relative;
+}
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #d4af37;
+    transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+.active::after {
+    width: 100%;
+}
+.filter-active {
+    background-color: #1e5b9b;
+    color: white;
+}
+.year-filter-active {
+    background-color: #1e5b9b;
+    color: white;
+}
+.publication-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.publication-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.admin-panel {
+    transition: all 0.3s ease;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- Header -->
+<header class="fixed w-full bg-white shadow-md z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <a href="index.html" class="text-primary font-['Pacifico'] text-3xl">Elysium</a>
+        </div>
+        <nav class="hidden md:flex space-x-10">
+            <a href="index.html" data-readdy="true" class="nav-link text-gray-800 hover:text-primary transition-colors">Početna</a>
+            <a href="index.html" class="nav-link text-gray-800 hover:text-primary transition-colors">Biografija</a>
+            <a href="index.html" class="nav-link text-gray-800 hover:text-primary transition-colors">Usluge</a>
+            <a href="index.html" class="nav-link active text-primary hover:text-primary transition-colors">Publikacije</a>
+            <a href="index.html" class="nav-link text-gray-800 hover:text-primary transition-colors">Kontakt</a>
+        </nav>
+        <div class="md:hidden w-10 h-10 flex items-center justify-center">
+            <button id="mobile-menu-button" class="text-gray-800">
+                <i class="ri-menu-line ri-2x"></i>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white w-full">
+        <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+            <a href="https://readdy.ai/home/196c6a7f-4145-415a-bf94-81eeb5dfa0e5/7e60d287-f4e4-40d9-a7ae-2b8019ba345a" data-readdy="true" class="text-gray-800 hover:text-primary transition-colors py-2">Početna</a>
+            <a href="#" class="text-gray-800 hover:text-primary transition-colors py-2">Biografija</a>
+            <a href="#" class="text-gray-800 hover:text-primary transition-colors py-2">Usluge</a>
+            <a href="#" class="text-primary hover:text-primary transition-colors py-2">Publikacije</a>
+            <a href="#" class="text-gray-800 hover:text-primary transition-colors py-2">Kontakt</a>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="pt-28 pb-20">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-bold text-primary mb-2">Publikacije</h1>
+                <p class="text-gray-600">Kompletna lista naučnih radova, knjiga i članaka Prof. dr Bobi Nacho</p>
+            </div>
+            <a href="index.html" data-readdy="true" class="flex items-center text-primary hover:text-primary/80 transition-colors mt-4 md:mt-0">
+                <div class="w-5 h-5 flex items-center justify-center mr-2">
+                    <i class="ri-arrow-left-line"></i>
+                </div>
+                <span>Nazad na profil</span>
+            </a>
+        </div>
+
+        <!-- Filters -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4 md:mb-0">Filtrirajte publikacije</h2>
+                <div class="relative w-full md:w-64">
+                    <input type="text" id="search-input" placeholder="Pretraži publikacije..." class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary text-sm">
+                    <div class="absolute right-3 top-2.5 text-gray-400">
+                        <i class="ri-search-line"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-sm font-medium text-gray-700 mb-2">Tip publikacije</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="type-filter filter-active px-3 py-1.5 rounded-full text-sm font-medium transition-colors whitespace-nowrap" data-type="all">Sve publikacije</button>
+                        <button class="type-filter px-3 py-1.5 bg-gray-100 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors whitespace-nowrap" data-type="naucni-rad">Naučni radovi</button>
+                        <button class="type-filter px-3 py-1.5 bg-gray-100 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors whitespace-nowrap" data-type="knjiga">Knjige</button>
+                        <button class="type-filter px-3 py-1.5 bg-gray-100 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors whitespace-nowrap" data-type="poglavlje">Poglavlja u knjigama</button>
+                        <button class="type-filter px-3 py-1.5 bg-gray-100 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors whitespace-nowrap" data-type="konferencija">Konferencijski radovi</button>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-sm font-medium text-gray-700 mb-2">Godina izdanja</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="year-filter year-filter-active px-3 py-1.5 rounded-full text-sm font-medium transition-colors whitespace-nowrap" data-year="all">Sve godine</button>
+                        <button class="year-filter px-3 py-1.5 bg-gray-100 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors whitespace-nowrap" data-year="2023">2023</button>
+                        <button class="year-filter px-3 py-1.5 bg-gray-100 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors whitespace-nowrap" data-year="2022">2022</button>
+                        <button class="year-filter px-3 py-1.5 bg-gray-100 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors whitespace-nowrap" data-year="2021">2021</button>
+                        <button class="year-filter px-3 py-1.5 bg-gray-100 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors whitespace-nowrap" data-year="2020">2020</button>
+                        <button class="year-filter px-3 py-1.5 bg-gray-100 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors whitespace-nowrap" data-year="older">Starije</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Publications List -->
+        <div id="publications-container">
+            <!-- 2023 -->
+            <div class="mb-10 publication-year" data-year="2023">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                    <div class="w-8 h-8 flex items-center justify-center text-primary mr-2">
+                        <i class="ri-calendar-line ri-lg"></i>
+                    </div>
+                    2023
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-md" data-type="naucni-rad" data-year="2023">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary">
+                                <i class="ri-article-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white bg-primary px-2 py-0.5 rounded">Naučni rad</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Napredne tehnike u mikrohirurgiji cerebralnih aneurizmi</h3>
+                        <p class="text-gray-600 mb-3">Journal of Neurosurgery, 2023</p>
+                        <p class="text-gray-700 mb-4">Istraživanje novih mikrohirurških tehnika koje značajno smanjuju postoperativne komplikacije kod pacijenata sa kompleksnim cerebralnim aneurizmama. Studija obuhvata 78 pacijenata praćenih tokom perioda od 3 godine.</p>
+                        <a href="https://docs.google.com/document/d/example1" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <span>Pročitajte više</span>
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-external-link-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-md" data-type="naucni-rad" data-year="2023">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary">
+                                <i class="ri-article-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white bg-primary px-2 py-0.5 rounded">Naučni rad</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Komparativna analiza endovaskularnih i mikrohirurških pristupa lečenju intrakranijalnih aneurizmi</h3>
+                        <p class="text-gray-600 mb-3">European Journal of Neurosurgery, 2023</p>
+                        <p class="text-gray-700 mb-4">Detaljna analiza ishoda lečenja 240 pacijenata sa intrakranijalnim aneurizmama tretiranih endovaskularnim ili mikrohirurškim pristupom u periodu od 5 godina.</p>
+                        <a href="https://docs.google.com/document/d/example2" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <span>Pročitajte više</span>
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-external-link-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-md" data-type="knjiga" data-year="2023">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary">
+                                <i class="ri-book-2-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white bg-secondary px-2 py-0.5 rounded">Knjiga</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Savremena neurohirurgija: Principi i praksa</h3>
+                        <p class="text-gray-600 mb-3">Medicinski fakultet Univerziteta u Beogradu, 2023</p>
+                        <p class="text-gray-700 mb-4">Sveobuhvatni udžbenik koji pokriva najnovije tehnike i pristupe u savremenoj neurohirurgiji. Knjiga je namenjena specijalizantima neurohirurgije i specijalistima koji žele da unaprede svoje znanje.</p>
+                        <a href="https://docs.google.com/document/d/example3" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <span>Pročitajte više</span>
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-external-link-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2022 -->
+            <div class="mb-10 publication-year" data-year="2022">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                    <div class="w-8 h-8 flex items-center justify-center text-primary mr-2">
+                        <i class="ri-calendar-line ri-lg"></i>
+                    </div>
+                    2022
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-md" data-type="naucni-rad" data-year="2022">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary">
+                                <i class="ri-article-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white bg-primary px-2 py-0.5 rounded">Naučni rad</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Dugoročni rezultati duboke moždane stimulacije kod pacijenata sa Parkinsonovom bolešću</h3>
+                        <p class="text-gray-600 mb-3">Neurology, 2022</p>
+                        <p class="text-gray-700 mb-4">Desetogodišnja studija praćenja pacijenata sa Parkinsonovom bolešću nakon primene duboke moždane stimulacije. Istraživanje pokazuje značajno poboljšanje kvaliteta života i smanjenje motornih simptoma.</p>
+                        <a href="https://docs.google.com/document/d/example4" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <span>Pročitajte više</span>
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-external-link-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-md" data-type="poglavlje" data-year="2022">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary">
+                                <i class="ri-book-open-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white bg-green-600 px-2 py-0.5 rounded">Poglavlje u knjizi</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Minimalno invazivni pristupi u neurohirurgiji kičmene moždine</h3>
+                        <p class="text-gray-600 mb-3">U: Savremeni trendovi u neurohirurgiji, Springer, 2022</p>
+                        <p class="text-gray-700 mb-4">Poglavlje koje detaljno opisuje najnovije minimalno invazivne tehnike u hirurgiji kičmene moždine, sa fokusom na smanjenje operativne traume i ubrzanje oporavka pacijenata.</p>
+                        <a href="https://docs.google.com/document/d/example5" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <span>Pročitajte više</span>
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-external-link-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-md" data-type="konferencija" data-year="2022">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary">
+                                <i class="ri-presentation-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white bg-purple-600 px-2 py-0.5 rounded">Konferencijski rad</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Primena robotike u neurohirurgiji: Iskustva i perspektive</h3>
+                        <p class="text-gray-600 mb-3">Evropski kongres neurohirurga, Berlin, 2022</p>
+                        <p class="text-gray-700 mb-4">Prezentacija najnovijih dostignuća u primeni robotičkih sistema u neurohirurgiji, sa prikazom slučajeva i analizom prednosti i ograničenja ove tehnologije.</p>
+                        <a href="https://docs.google.com/document/d/example6" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <span>Pročitajte više</span>
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-external-link-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2021 -->
+            <div class="mb-10 publication-year" data-year="2021">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                    <div class="w-8 h-8 flex items-center justify-center text-primary mr-2">
+                        <i class="ri-calendar-line ri-lg"></i>
+                    </div>
+                    2021
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-md" data-type="naucni-rad" data-year="2021">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary">
+                                <i class="ri-article-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white bg-primary px-2 py-0.5 rounded">Naučni rad</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Primena veštačke inteligencije u planiranju neurohirurških operacija</h3>
+                        <p class="text-gray-600 mb-3">Surgical Neurology International, 2021</p>
+                        <p class="text-gray-700 mb-4">Inovativni pristup korišćenja AI algoritama za precizno planiranje neurohirurških intervencija i poboljšanje ishoda lečenja. Studija pokazuje 27% smanjenje operativnih komplikacija.</p>
+                        <a href="https://docs.google.com/document/d/example7" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <span>Pročitajte više</span>
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-external-link-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-md" data-type="naucni-rad" data-year="2021">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary">
+                                <i class="ri-article-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white bg-primary px-2 py-0.5 rounded">Naučni rad</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Biomarkeri u predikciji ishoda lečenja traumatske povrede mozga</h3>
+                        <p class="text-gray-600 mb-3">Journal of Neurotrauma, 2021</p>
+                        <p class="text-gray-700 mb-4">Identifikacija novih biomarkera koji mogu predvideti dugoročni ishod kod pacijenata sa traumatskom povredom mozga. Studija obuhvata 156 pacijenata praćenih tokom 18 meseci.</p>
+                        <a href="https://docs.google.com/document/d/example8" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <span>Pročitajte više</span>
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-external-link-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2020 -->
+            <div class="mb-10 publication-year" data-year="2020">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                    <div class="w-8 h-8 flex items-center justify-center text-primary mr-2">
+                        <i class="ri-calendar-line ri-lg"></i>
+                    </div>
+                    2020
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-md" data-type="naucni-rad" data-year="2020">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary">
+                                <i class="ri-article-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white bg-primary px-2 py-0.5 rounded">Naučni rad</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Minimalno invazivne tehnike u hirurgiji kičmene moždine</h3>
+                        <p class="text-gray-600 mb-3">Spine Journal, 2020</p>
+                        <p class="text-gray-700 mb-4">Razvoj i implementacija novih minimalno invazivnih pristupa u lečenju oboljenja kičmene moždine sa značajnim smanjenjem vremena oporavka. Studija obuhvata 95 pacijenata.</p>
+                        <a href="https://docs.google.com/document/d/example9" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <span>Pročitajte više</span>
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-external-link-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-md" data-type="knjiga" data-year="2020">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary">
+                                <i class="ri-book-2-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white bg-secondary px-2 py-0.5 rounded">Knjiga</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Funkcionalna neurohirurgija: Od teorije do prakse</h3>
+                        <p class="text-gray-600 mb-3">Medicinska knjiga, Beograd, 2020</p>
+                        <p class="text-gray-700 mb-4">Sveobuhvatni priručnik o funkcionalnoj neurohirurgiji koji pokriva sve aspekte od dijagnostike do najsavremenijih hirurških tehnika. Knjiga sadrži preko 200 ilustracija i slučajeva iz prakse.</p>
+                        <a href="https://docs.google.com/document/d/example10" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <span>Pročitajte više</span>
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-external-link-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Older -->
+            <div class="mb-10 publication-year" data-year="older">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                    <div class="w-8 h-8 flex items-center justify-center text-primary mr-2">
+                        <i class="ri-calendar-line ri-lg"></i>
+                    </div>
+                    Starije publikacije
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-md" data-type="naucni-rad" data-year="2019">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary">
+                                <i class="ri-article-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white bg-primary px-2 py-0.5 rounded">Naučni rad</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Neuroplastičnost nakon moždanog udara: Implikacije za rehabilitaciju</h3>
+                        <p class="text-gray-600 mb-3">Stroke, 2019</p>
+                        <p class="text-gray-700 mb-4">Istraživanje mehanizama neuroplastičnosti nakon moždanog udara i njihov uticaj na razvoj novih rehabilitacionih protokola. Studija je pratila 112 pacijenata tokom 2 godine.</p>
+                        <a href="https://docs.google.com/document/d/example11" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <span>Pročitajte više</span>
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-external-link-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-md" data-type="poglavlje" data-year="2018">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary">
+                                <i class="ri-book-open-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white bg-green-600 px-2 py-0.5 rounded">Poglavlje u knjizi</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Hirurško lečenje epilepsije: Savremeni pristupi</h3>
+                        <p class="text-gray-600 mb-3">U: Epilepsija: Dijagnostika i lečenje, Oxford University Press, 2018</p>
+                        <p class="text-gray-700 mb-4">Poglavlje koje detaljno opisuje najnovije hirurške tehnike u lečenju farmakorezistentne epilepsije, sa posebnim osvrtom na selekciju pacijenata i dugoročne rezultate.</p>
+                        <a href="https://docs.google.com/document/d/example12" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <span>Pročitajte više</span>
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-external-link-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-md" data-type="knjiga" data-year="2015">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary">
+                                <i class="ri-book-2-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white bg-secondary px-2 py-0.5 rounded">Knjiga</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Atlas neurohirurške anatomije</h3>
+                        <p class="text-gray-600 mb-3">Medicinski fakultet Univerziteta u Beogradu, 2015</p>
+                        <p class="text-gray-700 mb-4">Detaljni anatomski atlas sa preko 500 ilustracija i fotografija koji služi kao esencijalni priručnik za neurohirurge. Uključuje 3D rekonstrukcije i mikroskopske prikaze.</p>
+                        <a href="https://docs.google.com/document/d/example13" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <span>Pročitajte više</span>
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-external-link-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-md" data-type="naucni-rad" data-year="2012">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary">
+                                <i class="ri-article-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white bg-primary px-2 py-0.5 rounded">Naučni rad</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Uloga neuronavigacije u hirurgiji tumora mozga</h3>
+                        <p class="text-gray-600 mb-3">Neurosurgery, 2012</p>
+                        <p class="text-gray-700 mb-4">Analiza primene neuronavigacije u 245 slučajeva tumora mozga, sa fokusom na preciznost resekcije i postoperativne ishode. Studija pokazuje značajno poboljšanje u totalnoj resekciji tumora.</p>
+                        <a href="https://docs.google.com/document/d/example14" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <span>Pročitajte više</span>
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-external-link-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- No Results Message -->
+        <div id="no-results" class="hidden bg-white p-10 rounded-lg shadow-md text-center">
+            <div class="w-16 h-16 mx-auto mb-4 text-gray-400">
+                <i class="ri-search-line ri-3x"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Nema rezultata pretrage</h3>
+            <p class="text-gray-600">Pokušajte sa drugačijim kriterijumima pretrage</p>
+        </div>
+    </div>
+</main>
+
+<!-- Admin Login Modal -->
+<div id="admin-login-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-xl p-8 max-w-md w-full mx-4">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-primary">Admin prijava</h2>
+            <button id="close-login-modal" class="text-gray-500 hover:text-gray-700">
+                <i class="ri-close-line ri-lg"></i>
+            </button>
+        </div>
+        <form id="admin-login-form" class="space-y-6">
+            <div>
+                <label for="admin-username" class="block text-gray-700 mb-2">Korisničko ime</label>
+                <input type="text" id="admin-username" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Unesite korisničko ime">
+            </div>
+            <div>
+                <label for="admin-password" class="block text-gray-700 mb-2">Lozinka</label>
+                <input type="password" id="admin-password" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Unesite lozinku">
+            </div>
+            <div id="login-error" class="text-red-500 text-sm hidden">Pogrešno korisničko ime ili lozinka</div>
+            <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white py-3 px-6 !rounded-button whitespace-nowrap transition-colors">Prijavi se</button>
+        </form>
+    </div>
+</div>
+
+<!-- Admin Panel -->
+<div id="admin-panel" class="fixed bottom-6 right-6 hidden">
+    <div class="admin-panel bg-white rounded-lg shadow-xl p-4">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-primary">Admin panel</h3>
+            <button id="admin-logout" class="text-gray-500 hover:text-gray-700">
+                <i class="ri-logout-box-r-line"></i>
+            </button>
+        </div>
+        <button id="add-publication-btn" class="w-full bg-primary hover:bg-primary/90 text-white py-2 px-4 !rounded-button whitespace-nowrap transition-colors flex items-center justify-center">
+            <div class="w-5 h-5 flex items-center justify-center mr-2">
+                <i class="ri-add-line"></i>
+            </div>
+            Dodaj publikaciju
+        </button>
+    </div>
+</div>
+
+<!-- Add Publication Modal -->
+<div id="add-publication-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-xl p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-primary">Dodaj novu publikaciju</h2>
+            <button id="close-publication-modal" class="text-gray-500 hover:text-gray-700">
+                <i class="ri-close-line ri-lg"></i>
+            </button>
+        </div>
+        <form id="add-publication-form" class="space-y-6">
+            <div>
+                <label for="pub-title" class="block text-gray-700 mb-2">Naslov publikacije*</label>
+                <input type="text" id="pub-title" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Unesite naslov publikacije" required>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="pub-year" class="block text-gray-700 mb-2">Godina izdanja*</label>
+                    <input type="number" id="pub-year" min="1900" max="2030" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="npr. 2023" required>
+                </div>
+                <div>
+                    <label for="pub-type" class="block text-gray-700 mb-2">Tip publikacije*</label>
+                    <div class="relative">
+                        <select id="pub-type" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary appearance-none pr-8" required>
+                            <option value="" disabled selected>Izaberite tip publikacije</option>
+                            <option value="naucni-rad">Naučni rad</option>
+                            <option value="knjiga">Knjiga</option>
+                            <option value="poglavlje">Poglavlje u knjizi</option>
+                            <option value="konferencija">Konferencijski rad</option>
+                        </select>
+                        <div class="absolute right-3 top-3.5 text-gray-500 pointer-events-none">
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label for="pub-journal" class="block text-gray-700 mb-2">Naziv časopisa/izdavača*</label>
+                <input type="text" id="pub-journal" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="npr. Journal of Neurosurgery" required>
+            </div>
+            <div>
+                <label for="pub-description" class="block text-gray-700 mb-2">Kratak opis*</label>
+                <textarea id="pub-description" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Unesite kratak opis publikacije" required></textarea>
+            </div>
+            <div>
+                <label for="pub-url" class="block text-gray-700 mb-2">Google Docs URL</label>
+                <input type="url" id="pub-url" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="npr. https://docs.google.com/document/d/...">
+            </div>
+            <div class="flex justify-end space-x-4">
+                <button type="button" id="cancel-publication" class="bg-gray-200 hover:bg-gray-300 text-gray-800 py-3 px-6 !rounded-button whitespace-nowrap transition-colors">Otkaži</button>
+                <button type="submit" class="bg-primary hover:bg-primary/90 text-white py-3 px-6 !rounded-button whitespace-nowrap transition-colors">Sačuvaj publikaciju</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Edit Publication Modal -->
+<div id="edit-publication-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-xl p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-primary">Izmeni publikaciju</h2>
+            <button id="close-edit-modal" class="text-gray-500 hover:text-gray-700">
+                <i class="ri-close-line ri-lg"></i>
+            </button>
+        </div>
+        <form id="edit-publication-form" class="space-y-6">
+            <input type="hidden" id="edit-pub-id">
+            <div>
+                <label for="edit-pub-title" class="block text-gray-700 mb-2">Naslov publikacije*</label>
+                <input type="text" id="edit-pub-title" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Unesite naslov publikacije" required>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="edit-pub-year" class="block text-gray-700 mb-2">Godina izdanja*</label>
+                    <input type="number" id="edit-pub-year" min="1900" max="2030" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="npr. 2023" required>
+                </div>
+                <div>
+                    <label for="edit-pub-type" class="block text-gray-700 mb-2">Tip publikacije*</label>
+                    <div class="relative">
+                        <select id="edit-pub-type" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary appearance-none pr-8" required>
+                            <option value="naucni-rad">Naučni rad</option>
+                            <option value="knjiga">Knjiga</option>
+                            <option value="poglavlje">Poglavlje u knjizi</option>
+                            <option value="konferencija">Konferencijski rad</option>
+                        </select>
+                        <div class="absolute right-3 top-3.5 text-gray-500 pointer-events-none">
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label for="edit-pub-journal" class="block text-gray-700 mb-2">Naziv časopisa/izdavača*</label>
+                <input type="text" id="edit-pub-journal" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="npr. Journal of Neurosurgery" required>
+            </div>
+            <div>
+                <label for="edit-pub-description" class="block text-gray-700 mb-2">Kratak opis*</label>
+                <textarea id="edit-pub-description" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Unesite kratak opis publikacije" required></textarea>
+            </div>
+            <div>
+                <label for="edit-pub-url" class="block text-gray-700 mb-2">Google Docs URL</label>
+                <input type="url" id="edit-pub-url" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="npr. https://docs.google.com/document/d/...">
+            </div>
+            <div class="flex justify-between">
+                <button type="button" id="delete-publication" class="bg-red-500 hover:bg-red-600 text-white py-3 px-6 !rounded-button whitespace-nowrap transition-colors flex items-center">
+                    <div class="w-5 h-5 flex items-center justify-center mr-2">
+                        <i class="ri-delete-bin-line"></i>
+                    </div>
+                    Obriši
+                </button>
+                <div class="flex space-x-4">
+                    <button type="button" id="cancel-edit" class="bg-gray-200 hover:bg-gray-300 text-gray-800 py-3 px-6 !rounded-button whitespace-nowrap transition-colors">Otkaži</button>
+                    <button type="submit" class="bg-primary hover:bg-primary/90 text-white py-3 px-6 !rounded-button whitespace-nowrap transition-colors">Sačuvaj izmene</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div id="delete-confirmation-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-xl p-8 max-w-md w-full mx-4">
+        <div class="text-center mb-6">
+            <div class="w-16 h-16 mx-auto mb-4 text-red-500">
+                <i class="ri-error-warning-line ri-3x"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Potvrda brisanja</h2>
+            <p class="text-gray-600">Da li ste sigurni da želite da obrišete ovu publikaciju? Ova akcija se ne može poništiti.</p>
+        </div>
+        <div class="flex justify-center space-x-4">
+            <button id="cancel-delete" class="bg-gray-200 hover:bg-gray-300 text-gray-800 py-3 px-6 !rounded-button whitespace-nowrap transition-colors">Otkaži</button>
+            <button id="confirm-delete" class="bg-red-500 hover:bg-red-600 text-white py-3 px-6 !rounded-button whitespace-nowrap transition-colors">Obriši</button>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-12">
+            <div>
+                <a href="#" class="text-white font-['Pacifico'] text-3xl">Elysium</a>
+                <p class="mt-4 text-gray-400">Klinički centar "Elysium" predstavlja vrhunsku medicinsku ustanovu posvećenu pružanju najkvalitetnijih zdravstvenih usluga uz primenu najsavremenijih medicinskih tehnologija.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-6">Brzi linkovi</h4>
+                <ul class="space-y-3">
+                    <li><a href="https://readdy.ai/home/196c6a7f-4145-415a-bf94-81eeb5dfa0e5/7e60d287-f4e4-40d9-a7ae-2b8019ba345a" data-readdy="true" class="text-gray-400 hover:text-white transition-colors">Početna</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Biografija</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Usluge</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Publikacije</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Kontakt</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-6">Newsletter</h4>
+                <p class="text-gray-400 mb-4">Prijavite se na naš newsletter i budite u toku sa najnovijim dostignućima u oblasti neurohirurgije.</p>
+                <form class="flex">
+                    <input type="email" placeholder="Vaša email adresa" class="flex-1 px-4 py-2 border-none rounded-l focus:outline-none text-gray-800">
+                    <button type="submit" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-r-button whitespace-nowrap transition-colors">Prijava</button>
+                </form>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-sm">© 2025 Klinički centar "Elysium". Sva prava zadržana.</p>
+            <div class="mt-4 md:mt-0 flex items-center">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors mx-2">Politika privatnosti</a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors mx-2">Uslovi korišćenja</a>
+                <button id="admin-login-link" class="text-gray-400 hover:text-white transition-colors mx-2 text-sm">Admin prijava</button>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Filter functionality
+    const typeFilters = document.querySelectorAll('.type-filter');
+    const yearFilters = document.querySelectorAll('.year-filter');
+    const searchInput = document.getElementById('search-input');
+    const publicationItems = document.querySelectorAll('.publication-item');
+    const publicationYears = document.querySelectorAll('.publication-year');
+    const noResults = document.getElementById('no-results');
+
+    let activeTypeFilter = 'all';
+    let activeYearFilter = 'all';
+    let searchTerm = '';
+
+    // Type filter click event
+    typeFilters.forEach(filter => {
+        filter.addEventListener('click', function() {
+            // Remove active class from all type filters
+            typeFilters.forEach(f => f.classList.remove('filter-active'));
+            typeFilters.forEach(f => f.classList.add('bg-gray-100', 'text-gray-700'));
+            
+            // Add active class to clicked filter
+            this.classList.add('filter-active');
+            this.classList.remove('bg-gray-100', 'text-gray-700');
+            
+            activeTypeFilter = this.getAttribute('data-type');
+            filterPublications();
+        });
+    });
+
+    // Year filter click event
+    yearFilters.forEach(filter => {
+        filter.addEventListener('click', function() {
+            // Remove active class from all year filters
+            yearFilters.forEach(f => f.classList.remove('year-filter-active'));
+            yearFilters.forEach(f => f.classList.add('bg-gray-100', 'text-gray-700'));
+            
+            // Add active class to clicked filter
+            this.classList.add('year-filter-active');
+            this.classList.remove('bg-gray-100', 'text-gray-700');
+            
+            activeYearFilter = this.getAttribute('data-year');
+            filterPublications();
+        });
+    });
+
+    // Search input event
+    searchInput.addEventListener('input', function() {
+        searchTerm = this.value.toLowerCase().trim();
+        filterPublications();
+    });
+
+    // Filter publications based on active filters and search term
+    function filterPublications() {
+        let visibleCount = 0;
+        let visibleYears = new Set();
+
+        publicationItems.forEach(item => {
+            const type = item.getAttribute('data-type');
+            const year = item.getAttribute('data-year');
+            const title = item.querySelector('h3').textContent.toLowerCase();
+            const journal = item.querySelector('p:nth-of-type(1)').textContent.toLowerCase();
+            const description = item.querySelector('p:nth-of-type(2)').textContent.toLowerCase();
+            
+            const matchesType = activeTypeFilter === 'all' || type === activeTypeFilter;
+            const matchesYear = activeYearFilter === 'all' || 
+                                (activeYearFilter === 'older' && parseInt(year) < 2020) || 
+                                year === activeYearFilter;
+            const matchesSearch = searchTerm === '' || 
+                                title.includes(searchTerm) || 
+                                journal.includes(searchTerm) || 
+                                description.includes(searchTerm);
+            
+            if (matchesType && matchesYear && matchesSearch) {
+                item.classList.remove('hidden');
+                visibleCount++;
+                visibleYears.add(item.closest('.publication-year').getAttribute('data-year'));
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+
+        // Show/hide year sections based on visible publications
+        publicationYears.forEach(yearSection => {
+            const yearValue = yearSection.getAttribute('data-year');
+            const hasVisiblePublications = visibleYears.has(yearValue);
+            
+            if (hasVisiblePublications) {
+                yearSection.classList.remove('hidden');
+            } else {
+                yearSection.classList.add('hidden');
+            }
+        });
+
+        // Show/hide no results message
+        if (visibleCount === 0) {
+            noResults.classList.remove('hidden');
+        } else {
+            noResults.classList.add('hidden');
+        }
+    }
+
+    // Admin functionality
+    const adminLoginLink = document.getElementById('admin-login-link');
+    const adminLoginModal = document.getElementById('admin-login-modal');
+    const closeLoginModal = document.getElementById('close-login-modal');
+    const adminLoginForm = document.getElementById('admin-login-form');
+    const loginError = document.getElementById('login-error');
+    const adminPanel = document.getElementById('admin-panel');
+    const adminLogout = document.getElementById('admin-logout');
+    
+    // Add Publication Modal
+    const addPublicationBtn = document.getElementById('add-publication-btn');
+    const addPublicationModal = document.getElementById('add-publication-modal');
+    const closePublicationModal = document.getElementById('close-publication-modal');
+    const addPublicationForm = document.getElementById('add-publication-form');
+    const cancelPublication = document.getElementById('cancel-publication');
+    
+    // Edit Publication Modal
+    const editPublicationModal = document.getElementById('edit-publication-modal');
+    const closeEditModal = document.getElementById('close-edit-modal');
+    const editPublicationForm = document.getElementById('edit-publication-form');
+    const cancelEdit = document.getElementById('cancel-edit');
+    
+    // Delete Confirmation Modal
+    const deletePublicationBtn = document.getElementById('delete-publication');
+    const deleteConfirmationModal = document.getElementById('delete-confirmation-modal');
+    const cancelDelete = document.getElementById('cancel-delete');
+    const confirmDelete = document.getElementById('confirm-delete');
+
+    // Check if admin is logged in
+    function checkAdminStatus() {
+        const isAdmin = localStorage.getItem('isAdmin') === 'true';
+        if (isAdmin) {
+            adminPanel.classList.remove('hidden');
+            addAdminControls();
+        } else {
+            adminPanel.classList.add('hidden');
+            removeAdminControls();
+        }
+    }
+
+    // Add admin controls to publications
+    function addAdminControls() {
+        document.querySelectorAll('.publication-item').forEach(item => {
+            // Check if controls already exist
+            if (item.querySelector('.admin-controls')) return;
+            
+            const controls = document.createElement('div');
+            controls.className = 'admin-controls flex justify-end mt-4 space-x-2';
+            controls.innerHTML = `
+                <button class="edit-publication-btn bg-blue-100 hover:bg-blue-200 text-primary p-2 rounded-full transition-colors">
+                    <i class="ri-edit-line"></i>
+                </button>
+            `;
+            item.appendChild(controls);
+            
+            // Add edit event listener
+            const editBtn = controls.querySelector('.edit-publication-btn');
+            editBtn.addEventListener('click', function() {
+                const pubItem = this.closest('.publication-item');
+                const pubId = pubItem.getAttribute('data-id') || Math.random().toString(36).substr(2, 9);
+                const pubTitle = pubItem.querySelector('h3').textContent;
+                const pubJournal = pubItem.querySelector('p:nth-of-type(1)').textContent;
+                const pubDescription = pubItem.querySelector('p:nth-of-type(2)').textContent;
+                const pubType = pubItem.getAttribute('data-type');
+                const pubYear = pubItem.getAttribute('data-year');
+                const pubUrl = pubItem.querySelector('a').getAttribute('href');
+                
+                document.getElementById('edit-pub-id').value = pubId;
+                document.getElementById('edit-pub-title').value = pubTitle;
+                document.getElementById('edit-pub-journal').value = pubJournal;
+                document.getElementById('edit-pub-description').value = pubDescription;
+                document.getElementById('edit-pub-type').value = pubType;
+                document.getElementById('edit-pub-year').value = pubYear;
+                document.getElementById('edit-pub-url').value = pubUrl;
+                
+                editPublicationModal.classList.remove('hidden');
+            });
+        });
+    }
+
+    // Remove admin controls from publications
+    function removeAdminControls() {
+        document.querySelectorAll('.admin-controls').forEach(control => {
+            control.remove();
+        });
+    }
+
+    // Admin login link click
+    adminLoginLink.addEventListener('click', function() {
+        adminLoginModal.classList.remove('hidden');
+    });
+
+    // Close login modal
+    closeLoginModal.addEventListener('click', function() {
+        adminLoginModal.classList.add('hidden');
+        loginError.classList.add('hidden');
+        adminLoginForm.reset();
+    });
+
+    // Admin login form submit
+    adminLoginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const username = document.getElementById('admin-username').value;
+        const password = document.getElementById('admin-password').value;
+        
+        // Simple authentication (in a real app, this would be server-side)
+        if (username === 'admin' && password === 'password') {
+            localStorage.setItem('isAdmin', 'true');
+            adminLoginModal.classList.add('hidden');
+            adminPanel.classList.remove('hidden');
+            loginError.classList.add('hidden');
+            adminLoginForm.reset();
+            addAdminControls();
+        } else {
+            loginError.classList.remove('hidden');
+        }
+    });
+
+    // Admin logout
+    adminLogout.addEventListener('click', function() {
+        localStorage.removeItem('isAdmin');
+        adminPanel.classList.add('hidden');
+        removeAdminControls();
+    });
+
+    // Add publication button click
+    addPublicationBtn.addEventListener('click', function() {
+        addPublicationModal.classList.remove('hidden');
+    });
+
+    // Close add publication modal
+    closePublicationModal.addEventListener('click', function() {
+        addPublicationModal.classList.add('hidden');
+        addPublicationForm.reset();
+    });
+
+    // Cancel add publication
+    cancelPublication.addEventListener('click', function() {
+        addPublicationModal.classList.add('hidden');
+        addPublicationForm.reset();
+    });
+
+    // Add publication form submit
+    addPublicationForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const title = document.getElementById('pub-title').value;
+        const year = document.getElementById('pub-year').value;
+        const type = document.getElementById('pub-type').value;
+        const journal = document.getElementById('pub-journal').value;
+        const description = document.getElementById('pub-description').value;
+        const url = document.getElementById('pub-url').value || '#';
+        
+        // Create new publication element
+        const pubId = Math.random().toString(36).substr(2, 9);
+        
+        // Find or create year section
+        let yearSection = document.querySelector(`.publication-year[data-year="${year}"]`);
+        
+        if (!yearSection) {
+            // If year is older than 2020, add to "older" section
+            if (parseInt(year) < 2020) {
+                yearSection = document.querySelector('.publication-year[data-year="older"]');
+            } else {
+                // Create new year section
+                const publicationsContainer = document.getElementById('publications-container');
+                
+                yearSection = document.createElement('div');
+                yearSection.className = 'mb-10 publication-year';
+                yearSection.setAttribute('data-year', year);
+                
+                yearSection.innerHTML = `
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                        <div class="w-8 h-8 flex items-center justify-center text-primary mr-2">
+                            <i class="ri-calendar-line ri-lg"></i>
+                        </div>
+                        ${year}
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-6"></div>
+                `;
+                
+                // Insert in correct position (newest first)
+                let inserted = false;
+                const existingYearSections = document.querySelectorAll('.publication-year');
+                
+                for (let i = 0; i < existingYearSections.length; i++) {
+                    const sectionYear = existingYearSections[i].getAttribute('data-year');
+                    if (sectionYear === 'older') continue;
+                    
+                    if (parseInt(year) > parseInt(sectionYear)) {
+                        publicationsContainer.insertBefore(yearSection, existingYearSections[i]);
+                        inserted = true;
+                        break;
+                    }
+                }
+                
+                if (!inserted) {
+                    const olderSection = document.querySelector('.publication-year[data-year="older"]');
+                    if (olderSection) {
+                        publicationsContainer.insertBefore(yearSection, olderSection);
+                    } else {
+                        publicationsContainer.appendChild(yearSection);
+                    }
+                }
+            }
+        }
+        
+        // Create publication item
+        const newPublication = document.createElement('div');
+        newPublication.className = 'publication-item bg-white p-6 rounded-lg shadow-md';
+        newPublication.setAttribute('data-type', type);
+        newPublication.setAttribute('data-year', year);
+        newPublication.setAttribute('data-id', pubId);
+        
+        // Set type label text and color
+        let typeLabel = 'Naučni rad';
+        let typeColor = 'bg-primary';
+        let typeIcon = 'ri-article-line';
+        
+        if (type === 'knjiga') {
+            typeLabel = 'Knjiga';
+            typeColor = 'bg-secondary';
+            typeIcon = 'ri-book-2-line';
+        } else if (type === 'poglavlje') {
+            typeLabel = 'Poglavlje u knjizi';
+            typeColor = 'bg-green-600';
+            typeIcon = 'ri-book-open-line';
+        } else if (type === 'konferencija') {
+            typeLabel = 'Konferencijski rad';
+            typeColor = 'bg-purple-600';
+            typeIcon = 'ri-presentation-line';
+        }
+        
+        newPublication.innerHTML = `
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary">
+                    <i class="${typeIcon} ri-lg"></i>
+                </div>
+                <span class="text-sm font-medium text-white ${typeColor} px-2 py-0.5 rounded">${typeLabel}</span>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">${title}</h3>
+            <p class="text-gray-600 mb-3">${journal}, ${year}</p>
+            <p class="text-gray-700 mb-4">${description}</p>
+            <a href="${url}" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                <span>Pročitajte više</span>
+                <div class="w-5 h-5 flex items-center justify-center ml-2">
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </a>
+        `;
+        
+        // Add to year section
+        const publicationsGrid = yearSection.querySelector('.grid');
+        publicationsGrid.prepend(newPublication);
+        
+        // Add admin controls if admin is logged in
+        if (localStorage.getItem('isAdmin') === 'true') {
+            addAdminControls();
+        }
+        
+        // Close modal and reset form
+        addPublicationModal.classList.add('hidden');
+        addPublicationForm.reset();
+    });
+
+    // Close edit publication modal
+    closeEditModal.addEventListener('click', function() {
+        editPublicationModal.classList.add('hidden');
+    });
+
+    // Cancel edit publication
+    cancelEdit.addEventListener('click', function() {
+        editPublicationModal.classList.add('hidden');
+    });
+
+    // Edit publication form submit
+    editPublicationForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const pubId = document.getElementById('edit-pub-id').value;
+        const title = document.getElementById('edit-pub-title').value;
+        const year = document.getElementById('edit-pub-year').value;
+        const type = document.getElementById('edit-pub-type').value;
+        const journal = document.getElementById('edit-pub-journal').value;
+        const description = document.getElementById('edit-pub-description').value;
+        const url = document.getElementById('edit-pub-url').value || '#';
+        
+        // Find publication item
+        const pubItem = document.querySelector(`.publication-item[data-id="${pubId}"]`);
+        
+        if (pubItem) {
+            const oldYear = pubItem.getAttribute('data-year');
+            const oldType = pubItem.getAttribute('data-type');
+            
+            // Update publication data
+            pubItem.setAttribute('data-year', year);
+            pubItem.setAttribute('data-type', type);
+            
+            // Set type label text and color
+            let typeLabel = 'Naučni rad';
+            let typeColor = 'bg-primary';
+            let typeIcon = 'ri-article-line';
+            
+            if (type === 'knjiga') {
+                typeLabel = 'Knjiga';
+                typeColor = 'bg-secondary';
+                typeIcon = 'ri-book-2-line';
+            } else if (type === 'poglavlje') {
+                typeLabel = 'Poglavlje u knjizi';
+                typeColor = 'bg-green-600';
+                typeIcon = 'ri-book-open-line';
+            } else if (type === 'konferencija') {
+                typeLabel = 'Konferencijski rad';
+                typeColor = 'bg-purple-600';
+                typeIcon = 'ri-presentation-line';
+            }
+            
+            // Update publication content
+            pubItem.querySelector('h3').textContent = title;
+            pubItem.querySelector('p:nth-of-type(1)').textContent = `${journal}, ${year}`;
+            pubItem.querySelector('p:nth-of-type(2)').textContent = description;
+            pubItem.querySelector('a').setAttribute('href', url);
+            pubItem.querySelector('.w-10.h-10 i').className = `${typeIcon} ri-lg`;
+            pubItem.querySelector('span').className = `text-sm font-medium text-white ${typeColor} px-2 py-0.5 rounded`;
+            pubItem.querySelector('span').textContent = typeLabel;
+            
+            // If year changed, move to correct year section
+            if (oldYear !== year) {
+                // Find or create year section
+                let yearSection = document.querySelector(`.publication-year[data-year="${year}"]`);
+                
+                if (!yearSection) {
+                    // If year is older than 2020, add to "older" section
+                    if (parseInt(year) < 2020) {
+                        yearSection = document.querySelector('.publication-year[data-year="older"]');
+                    } else {
+                        // Create new year section
+                        const publicationsContainer = document.getElementById('publications-container');
+                        
+                        yearSection = document.createElement('div');
+                        yearSection.className = 'mb-10 publication-year';
+                        yearSection.setAttribute('data-year', year);
+                        
+                        yearSection.innerHTML = `
+                            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                                <div class="w-8 h-8 flex items-center justify-center text-primary mr-2">
+                                    <i class="ri-calendar-line ri-lg"></i>
+                                </div>
+                                ${year}
+                            </h2>
+                            <div class="grid md:grid-cols-2 gap-6"></div>
+                        `;
+                        
+                        // Insert in correct position (newest first)
+                        let inserted = false;
+                        const existingYearSections = document.querySelectorAll('.publication-year');
+                        
+                        for (let i = 0; i < existingYearSections.length; i++) {
+                            const sectionYear = existingYearSections[i].getAttribute('data-year');
+                            if (sectionYear === 'older') continue;
+                            
+                            if (parseInt(year) > parseInt(sectionYear)) {
+                                publicationsContainer.insertBefore(yearSection, existingYearSections[i]);
+                                inserted = true;
+                                break;
+                            }
+                        }
+                        
+                        if (!inserted) {
+                            const olderSection = document.querySelector('.publication-year[data-year="older"]');
+                            if (olderSection) {
+                                publicationsContainer.insertBefore(yearSection, olderSection);
+                            } else {
+                                publicationsContainer.appendChild(yearSection);
+                            }
+                        }
+                    }
+                }
+                
+                // Move publication to new year section
+                const publicationsGrid = yearSection.querySelector('.grid');
+                publicationsGrid.prepend(pubItem);
+                
+                // Check if old year section is empty
+                const oldYearSection = document.querySelector(`.publication-year[data-year="${oldYear}"]`);
+                if (oldYearSection && oldYearSection.querySelector('.grid').children.length === 0) {
+                    oldYearSection.remove();
+                }
+            }
+        }
+        
+        // Close modal
+        editPublicationModal.classList.add('hidden');
+    });
+
+    // Delete publication button click
+    deletePublicationBtn.addEventListener('click', function() {
+        editPublicationModal.classList.add('hidden');
+        deleteConfirmationModal.classList.remove('hidden');
+    });
+
+    // Cancel delete
+    cancelDelete.addEventListener('click', function() {
+        deleteConfirmationModal.classList.add('hidden');
+    });
+
+    // Confirm delete
+    confirmDelete.addEventListener('click', function() {
+        const pubId = document.getElementById('edit-pub-id').value;
+        const pubItem = document.querySelector(`.publication-item[data-id="${pubId}"]`);
+        
+        if (pubItem) {
+            const yearSection = pubItem.closest('.publication-year');
+            pubItem.remove();
+            
+            // Check if year section is empty
+            if (yearSection && yearSection.querySelector('.grid').children.length === 0) {
+                yearSection.remove();
+            }
+        }
+        
+        deleteConfirmationModal.classList.add('hidden');
+    });
+
+    // Check admin status on page load
+    checkAdminStatus();
+});
+</script>
+</body>
+</html>

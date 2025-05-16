@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Izaberite doktora - Klinički centar Elysium</title>
+  <script src="https://cdn.tailwindcss.com/3.4.16 "></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: "#1e5b9b", secondary: "#d4af37" },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+<!-- Header -->
+<header class="bg-white shadow-md py-4 px-6 sticky top-0 z-50">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="#" class="text-primary font-bold text-2xl">Elysium</a>
+    <nav class="space-x-6 hidden md:flex">
+      <a href="#doctors" class="text-gray-700 hover:text-primary">Doktori</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Doctors Section -->
+<section id="doctors" class="py-16 container mx-auto px-6">
+  <h2 class="text-3xl font-bold text-primary mb-12 text-center">Izaberite doktora</h2>
+  
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+    <!-- Doktor kartica - TEMPLATE -->
+    <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+      <img src="bobi2.png" alt="Dr Ime Prezime" class="w-full h-64 object-cover object-top">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Prof. dr sci. med. Nikola Miles</h3>
+        <p class="text-gray-600 mb-4">Specijalista opšte hirurgije i kardiohirurgije</p>
+        <ul class="space-y-2 text-sm text-gray-500">
+          <li>• Specijalizacija iz transplantacione hirurgije</li>
+          <li>• Subspecijalista minimalno invazivne kardiohirurgije</li>
+        </ul>
+        <div class="mt-4 pt-4 border-t border-gray-200 flex justify-between">
+          <button class="bg-primary text-white px-4 py-2 rounded hover:bg-primary/90 transition">
+            <a href="nikola-miles.html">Pogledaj Portfolio</a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Primer nove kartice - možeš kopirati i menjati -->
+    <!--
+    <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+      <img src="putanja/do/slike.jpg" alt="Dr Ime Prezime" class="w-full h-64 object-cover object-top">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Dr Vesna Petrović</h3>
+        <p class="text-gray-600 mb-4">Specijalista internističke medicinske dijagnostike</p>
+        <ul class="space-y-2 text-sm text-gray-500">
+          <li>• Gastroenterolog</li>
+          <li>• Hepatolog</li>
+        </ul>
+        <div class="mt-4 pt-4 border-t border-gray-200 flex justify-between">
+          <a href="#profil-vesna" class="text-primary hover:underline">Pogledaj profil</a>
+          <button class="bg-primary text-white px-4 py-2 rounded hover:bg-primary/90 transition">
+            Zakazi termin
+          </button>
+        </div>
+      </div>
+    </div>
+    -->
+
+    <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+      <img src="bobi.png" alt="Dr Ime Prezime" class="w-full h-64 object-cover object-top">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Prof. dr sci. med. Bobi Nacho</h3>
+        <p class="text-gray-600 mb-4">Specijalista opšte hirurgije i neurohirurgije</p>
+        <ul class="space-y-2 text-sm text-gray-500">
+          <li>• Specijalizacija iz opste hirurgije i neurohirurgije</li>
+          <li>• Subspecijalista funkcionalne i vaskularne neurohirurgije</li>
+        </ul>
+        <div class="mt-4 pt-4 border-t border-gray-200 flex justify-between">
+          <button class="bg-primary text-white px-4 py-2 rounded hover:bg-primary/90 transition">
+            <a href="bobi-nacho.html">Pogledaj Portfolio</a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-8 mt-16">
+  <div class="container mx-auto px-6 text-center">
+    <p>&copy; 2025 Klinički centar "Elysium". Sva prava zadržana.</p>
+  </div>
+</footer>
+
+</body>
+</html>

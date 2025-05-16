@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="sr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prof. dr sci. med. Bobi Nacho | Klinički centar Elysium</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#1e5b9b", secondary: "#d4af37" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+      }
+      .hero-section {
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 50%, rgba(255, 255, 255, 0.8) 70%, rgba(255, 255, 255, 0.5) 100%), url('https://readdy.ai/api/search-image?query=modern%20hospital%20interior%20with%20blue%20and%20white%20tones%2C%20clean%20medical%20environment%2C%20professional%20healthcare%20setting%2C%20soft%20lighting%2C%20minimalist%20design%2C%20high-tech%20medical%20equipment%2C%20healing%20atmosphere%2C%20spacious%20and%20elegant&width=1920&height=1080&seq=1&orientation=landscape');
+      background-size: cover;
+      background-position: center;
+      }
+      .quote-section {
+      background-image: linear-gradient(to right, rgba(30, 91, 155, 0.9), rgba(30, 91, 155, 0.7)), url('https://readdy.ai/api/search-image?query=abstract%20medical%20background%20with%20subtle%20neural%20network%20patterns%2C%20soft%20blue%20tones%2C%20representing%20brain%20and%20nervous%20system%2C%20elegant%20professional%20medical%20theme%2C%20minimalist%20design&width=1920&height=600&seq=2&orientation=landscape');
+      background-size: cover;
+      background-position: center;
+      }
+      .nav-link {
+      position: relative;
+      }
+      .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #d4af37;
+      transition: width 0.3s ease;
+      }
+      .nav-link:hover::after {
+      width: 100%;
+      }
+      .active::after {
+      width: 100%;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <a href="#" class="text-primary font-['Pacifico'] text-3xl"
+            >Elysium</a
+          >
+        </div>
+        <nav class="hidden md:flex space-x-10">
+          <a
+            href="#home"
+            class="nav-link active text-gray-800 hover:text-primary transition-colors"
+            >Početna</a
+          >
+          <a
+            href="#biografija"
+            class="nav-link text-gray-800 hover:text-primary transition-colors"
+            >Biografija</a
+          >
+          <a
+            href="#usluge"
+            class="nav-link text-gray-800 hover:text-primary transition-colors"
+            >Usluge</a
+          >
+          <a
+            href="#publikacije"
+            class="nav-link text-gray-800 hover:text-primary transition-colors"
+            >Publikacije</a
+          >
+          <a
+            href="#kontakt"
+            class="nav-link text-gray-800 hover:text-primary transition-colors"
+            >Kontakt</a
+          >
+        </nav>
+        <div class="md:hidden w-10 h-10 flex items-center justify-center">
+          <button id="mobile-menu-button" class="text-gray-800">
+            <i class="ri-menu-line ri-2x"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden bg-white w-full">
+        <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+          <a
+            href="#home"
+            class="text-gray-800 hover:text-primary transition-colors py-2"
+            >Početna</a
+          >
+          <a
+            href="#biografija"
+            class="text-gray-800 hover:text-primary transition-colors py-2"
+            >Biografija</a
+          >
+          <a
+            href="#usluge"
+            class="text-gray-800 hover:text-primary transition-colors py-2"
+            >Usluge</a
+          >
+          <a
+            href="#publikacije"
+            class="text-gray-800 hover:text-primary transition-colors py-2"
+            >Publikacije</a
+          >
+          <a
+            href="#kontakt"
+            class="text-gray-800 hover:text-primary transition-colors py-2"
+            >Kontakt</a
+          >
+        </div>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="hero-section min-h-screen pt-24 pb-16 flex items-center"
+    >
+      <div
+        class="container mx-auto px-6 flex flex-col md:flex-row items-center"
+      >
+        <div class="md:w-1/2 mb-10 md:mb-0">
+          <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
+            Prof. dr sci. med. Bobi Nacho
+          </h1>
+          <p class="text-xl md:text-2xl text-gray-700 mb-6">
+            prim., FACS, FRCS, MPH, MBA
+          </p>
+          <p class="text-lg md:text-xl text-gray-700 mb-6">
+            Direktor Kliničkog centra "Elysium"
+          </p>
+          <div class="mb-8">
+            <p class="text-gray-700 mb-2">
+              Specijalista opšte hirurgije i neurohirurgije
+            </p>
+            <p class="text-gray-700">
+              Subspecijalista funkcionalne i vaskularne neurohirurgije
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-4 mb-8">
+            <div class="flex items-center">
+              <div
+                class="w-10 h-10 flex items-center justify-center text-primary"
+              >
+                <i class="ri-phone-line ri-lg"></i>
+              </div>
+              <span class="ml-2 text-gray-700">553 678 650</span>
+            </div>
+            <div class="flex items-center">
+              <div
+                class="w-10 h-10 flex items-center justify-center text-primary"
+              >
+                <i class="ri-mail-line ri-lg"></i>
+              </div>
+              <span class="ml-2 text-gray-700">b.nacho@elysium.com</span>
+            </div>
+          </div>
+          <button
+            class="bg-primary hover:bg-primary/90 text-white py-3 px-8 !rounded-button whitespace-nowrap transition-colors flex items-center"
+          >
+            <div class="w-5 h-5 flex items-center justify-center mr-2">
+              <i class="ri-calendar-line"></i>
+            </div>
+            Zakazati konsultaciju
+          </button>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+          <div
+            class="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-white shadow-xl"
+          >
+            <img
+              src="bobi.png"
+              alt="Profile Image"
+              class="w-full h-full object-cover object-top"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Quote Section -->
+    <section class="quote-section py-20">
+      <div class="container mx-auto px-6 text-center">
+        <div class="w-16 h-16 mx-auto mb-6 text-white opacity-50">
+          <i class="ri-double-quotes-l ri-3x"></i>
+        </div>
+        <p
+          class="text-2xl md:text-3xl font-light text-white mb-6 max-w-3xl mx-auto"
+        >
+          "Telo popravljaš znanjem, mozak rukama, a sistem dušom."
+        </p>
+        <p class="text-lg text-white opacity-80">— Prof. Nacho</p>
+      </div>
+    </section>
+    <!-- Biografija Section -->
+    <section id="biografija" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-primary mb-12 text-center">
+          Biografija
+        </h2>
+        <div class="grid md:grid-cols-2 gap-12">
+          <div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              Obrazovanje i karijera
+            </h3>
+            <div class="space-y-6">
+              <div class="flex">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary mr-4 mt-1"
+                >
+                  <i class="ri-graduation-cap-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">
+                    Medicinski fakultet Univerziteta u Beogradu
+                  </h4>
+                  <p class="text-gray-600">Doktor medicine, 1995</p>
+                </div>
+              </div>
+              <div class="flex">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary mr-4 mt-1"
+                >
+                  <i class="ri-award-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">
+                    Specijalizacija iz opšte hirurgije
+                  </h4>
+                  <p class="text-gray-600">Klinički centar Srbije, 2000</p>
+                </div>
+              </div>
+              <div class="flex">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary mr-4 mt-1"
+                >
+                  <i class="ri-award-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">
+                    Specijalizacija iz neurohirurgije
+                  </h4>
+                  <p class="text-gray-600">Johns Hopkins Hospital, SAD, 2005</p>
+                </div>
+              </div>
+              <div class="flex">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary mr-4 mt-1"
+                >
+                  <i class="ri-book-open-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">
+                    Doktorat medicinskih nauka
+                  </h4>
+                  <p class="text-gray-600">Univerzitet u Beogradu, 2008</p>
+                </div>
+              </div>
+              <div class="flex">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary mr-4 mt-1"
+                >
+                  <i class="ri-briefcase-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">
+                    MBA iz zdravstvenog menadžmenta
+                  </h4>
+                  <p class="text-gray-600">INSEAD Business School, 2012</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              Dostignuća i priznanja
+            </h3>
+            <div class="space-y-6">
+              <div class="flex">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-secondary mr-4 mt-1"
+                >
+                  <i class="ri-medal-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">
+                    Fellow of the American College of Surgeons (FACS)
+                  </h4>
+                  <p class="text-gray-600">
+                    Priznanje za izuzetna dostignuća u hirurgiji
+                  </p>
+                </div>
+              </div>
+              <div class="flex">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-secondary mr-4 mt-1"
+                >
+                  <i class="ri-medal-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">
+                    Fellow of the Royal College of Surgeons (FRCS)
+                  </h4>
+                  <p class="text-gray-600">
+                    Prestižno priznanje u oblasti hirurgije
+                  </p>
+                </div>
+              </div>
+              <div class="flex">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-secondary mr-4 mt-1"
+                >
+                  <i class="ri-article-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">
+                    Preko 120 naučnih radova
+                  </h4>
+                  <p class="text-gray-600">
+                    Objavljenih u međunarodnim medicinskim časopisima
+                  </p>
+                </div>
+              </div>
+              <div class="flex">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-secondary mr-4 mt-1"
+                >
+                  <i class="ri-book-2-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">
+                    Autor 3 udžbenika iz neurohirurgije
+                  </h4>
+                  <p class="text-gray-600">
+                    Koriste se na medicinskim fakultetima širom regiona
+                  </p>
+                </div>
+              </div>
+              <div class="flex">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-secondary mr-4 mt-1"
+                >
+                  <i class="ri-government-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">
+                    Član Srpske akademije nauka i umetnosti
+                  </h4>
+                  <p class="text-gray-600">Od 2018. godine</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Usluge Section -->
+    <section id="usluge" class="py-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-primary mb-12 text-center">
+          Specijalizacije i usluge
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center text-primary mb-6 bg-blue-50 rounded-full mx-auto"
+            >
+              <i class="ri-brain-line ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">
+              Neurohirurgija
+            </h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Hirurgija tumora mozga</span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Mikrohirurgija aneurizmi</span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Hirurgija kičmene moždine</span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Tretman hidrocefalusa</span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Hirurgija epilepsije</span>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center text-primary mb-6 bg-blue-50 rounded-full mx-auto"
+            >
+              <i class="ri-heart-pulse-line ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">
+              Vaskularna neurohirurgija
+            </h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Lečenje cerebralnih aneurizmi</span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Tretman arteriovenskih malformacija</span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Karotidna endarterektomija</span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Bajpas operacije cerebralnih arterija</span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Lečenje moždanog udara</span>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center text-primary mb-6 bg-blue-50 rounded-full mx-auto"
+            >
+              <i class="ri-mental-health-line ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">
+              Funkcionalna neurohirurgija
+            </h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Duboka moždana stimulacija</span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Lečenje Parkinsonove bolesti</span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Tretman hroničnog bola</span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Hirurgija trigeminalne neuralgije</span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Neuromodulacija</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Publikacije Section -->
+    <section id="publikacije" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-primary mb-12 text-center">
+          Odabrane publikacije
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">
+              Napredne tehnike u mikrohirurgiji cerebralnih aneurizmi
+            </h3>
+            <p class="text-gray-600 mb-4">Journal of Neurosurgery, 2023</p>
+            <p class="text-gray-700">
+              Istraživanje novih mikrohirurških tehnika koje značajno smanjuju
+              postoperativne komplikacije kod pacijenata sa kompleksnim
+              cerebralnim aneurizmama.
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">
+              Dugoročni rezultati duboke moždane stimulacije kod pacijenata sa
+              Parkinsonovom bolešću
+            </h3>
+            <p class="text-gray-600 mb-4">Neurology, 2022</p>
+            <p class="text-gray-700">
+              Desetogodišnja studija praćenja pacijenata sa Parkinsonovom
+              bolešću nakon primene duboke moždane stimulacije.
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">
+              Primena veštačke inteligencije u planiranju neurohirurških
+              operacija
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Surgical Neurology International, 2021
+            </p>
+            <p class="text-gray-700">
+              Inovativni pristup korišćenja AI algoritama za precizno planiranje
+              neurohirurških intervencija i poboljšanje ishoda lečenja.
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">
+              Minimalno invazivne tehnike u hirurgiji kičmene moždine
+            </h3>
+            <p class="text-gray-600 mb-4">Spine Journal, 2020</p>
+            <p class="text-gray-700">
+              Razvoj i implementacija novih minimalno invazivnih pristupa u
+              lečenju oboljenja kičmene moždine sa značajnim smanjenjem vremena
+              oporavka.
+            </p>
+          </div>
+        </div>
+        <div class="text-center mt-10">
+          <a
+            href="Sve-publikacije-Prof.-dr-No.html"
+            data-readdy="true"
+            class="inline-flex items-center text-primary hover:text-primary/80 transition-colors"
+          >
+            <span>Pogledajte sve publikacije</span>
+            <div class="w-5 h-5 flex items-center justify-center ml-2">
+              <i class="ri-arrow-right-line"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- Kontakt Section -->
+    <section id="kontakt" class="py-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-primary mb-12 text-center">
+          Kontaktirajte nas
+        </h2>
+        <div class="grid md:grid-cols-2 gap-12">
+          <div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-6">
+              Informacije za kontakt
+            </h3>
+            <div class="space-y-6">
+              <div class="flex">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary mr-4"
+                >
+                  <i class="ri-map-pin-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">Adresa</h4>
+                  <p class="text-gray-600">Sandy Shores</p>
+                </div>
+              </div>
+              <div class="flex">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary mr-4"
+                >
+                  <i class="ri-phone-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">Telefon</h4>
+                  <p class="text-gray-600">553 678 650</p>
+                </div>
+              </div>
+              <div class="flex">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary mr-4"
+                >
+                  <i class="ri-mail-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">Email</h4>
+                  <p class="text-gray-600">b.nacho@elysium.com</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-10">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">Discord</h3>
+              <div class="flex">
+                <a
+                  href="#"
+                  class="flex items-center text-gray-600 hover:text-primary transition-colors"
+                >
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full mr-2"
+                  >
+                    <i class="ri-discord-fill"></i>
+                  </div>
+                  <span>daklk</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-6">
+              Pošaljite poruku
+            </h3>
+            <form class="space-y-6">
+              <div>
+                <label for="name" class="block text-gray-700 mb-2"
+                  >Ime i prezime</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                  placeholder="Unesite vaše ime i prezime"
+                />
+              </div>
+              <div>
+                <label for="email" class="block text-gray-700 mb-2"
+                  >Email adresa</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                  placeholder="Unesite vašu email adresu"
+                />
+              </div>
+              <div>
+                <label for="phone" class="block text-gray-700 mb-2"
+                  >Broj telefona</label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                  placeholder="Unesite vaš broj telefona"
+                />
+              </div>
+              <div>
+                <label for="message" class="block text-gray-700 mb-2"
+                  >Poruka</label
+                >
+                <textarea
+                  id="message"
+                  rows="5"
+                  class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                  placeholder="Unesite vašu poruku"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="bg-primary hover:bg-primary/90 text-white py-3 px-6 !rounded-button whitespace-nowrap transition-colors"
+              >
+                Pošaljite poruku
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-12">
+          <div>
+            <a href="#" class="text-white font-['Pacifico'] text-3xl"
+              >Elysium</a
+            >
+            <p class="mt-4 text-gray-400">
+              Klinički centar "Elysium" predstavlja vrhunsku medicinsku ustanovu
+              posvećenu pružanju najkvalitetnijih zdravstvenih usluga uz primenu
+              najsavremenijih medicinskih tehnologija.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-6">Brzi linkovi</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#home"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Početna</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#biografija"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Biografija</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#usluge"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Usluge</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#publikacije"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Publikacije</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#kontakt"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Kontakt</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-6">Newsletter</h4>
+            <p class="text-gray-400 mb-4">
+              Prijavite se na naš newsletter i budite u toku sa najnovijim
+              dostignućima u oblasti neurohirurgije.
+            </p>
+            <form class="flex">
+              <input
+                type="email"
+                placeholder="Vaša email adresa"
+                class="flex-1 px-4 py-2 border-none rounded-l focus:outline-none text-gray-800"
+              />
+              <button
+                type="submit"
+                class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-r-button whitespace-nowrap transition-colors"
+              >
+                Prijava
+              </button>
+            </form>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400 text-sm">
+            © 2025 Klinički centar "Elysium". Sva prava zadržana.
+          </p>
+          <div class="mt-4 md:mt-0">
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition-colors mx-2"
+              >Politika privatnosti</a
+            >
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition-colors mx-2"
+              >Uslovi korišćenja</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+        });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+              // Close mobile menu if open
+              const mobileMenu = document.getElementById("mobile-menu");
+              if (!mobileMenu.classList.contains("hidden")) {
+                mobileMenu.classList.add("hidden");
+              }
+            }
+          });
+        });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        // Active navigation link highlighting
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-link");
+        window.addEventListener("scroll", function () {
+          let current = "";
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.pageYOffset >= sectionTop - 100) {
+              current = section.getAttribute("id");
+            }
+          });
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}`) {
+              link.classList.add("active");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
