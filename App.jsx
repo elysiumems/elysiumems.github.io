@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 // URL ka tvojim receptima u Gist-u
-const GIST_URL = "https://gist.githubusercontent.com/tvojnick/XXXXXXXXXXXXXX/raw/recepti.json"; 
-const GIST_ID = "XXXXXXXXXXXXXX"; // ID iz URL-a
+const GIST_URL = "https://gist.github.com/elysiumems/12d3d140451ef191fa4f63abacb0b699 "; 
+const GIST_ID = "12d3d140451ef191fa4f63abacb0b699"; // ID iz URL-a
 const GITHUB_TOKEN = ""; // OSTAVI PRAZNO AKO JE GIST JAVAN
 
 export default function App() {
